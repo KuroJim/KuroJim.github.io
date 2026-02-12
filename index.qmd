@@ -1,0 +1,103 @@
+---
+title: "Quanjia Xiao"
+image: images/site-logo.png
+---
+
+::: {.hero-section}
+::: {.profile-card}
+![Quanjia Xiao](images/site-logo.png)
+
+# Quanjia Xiao
+
+::: {.contact-links}
+[📧 xiaoqj@stu.pku.edu.cn](mailto:xiaoqj@stu.pku.edu.cn) · [🐙 GitHub](https://github.com/KuroJim) · [📄 CV](CV.html)
+:::
+
+**北京大学工业软件硕士** · **中南大学计算机学士**
+
+::: {.subtitle}
+M.S. in Industrial Software @ Peking University (2023-2026)
+:::
+:::
+:::
+
+::: {.quick-nav}
+::: {.glass-card}
+## 👤
+
+**[About](Chinese.qmd)**
+
+Learn more about my background and experience
+:::
+
+::: {.glass-card}
+## 🔬
+
+**[Projects](publications.qmd)**
+
+Explore my research and development work
+:::
+
+::: {.glass-card}
+## 📝
+
+**[CV](CV.html)**
+
+Download my full resume
+:::
+
+::: {.glass-card}
+## 📧
+
+**[Contact](#contact)**
+
+Get in touch with me
+:::
+:::
+
+---
+
+## Background
+
+::: {.glass-card}
+### 🎓 Education
+
+**2023.9 – 2026.6** · M.S. in Industrial Software
+: **Peking University** (北京大学)
+: — Ranking: 10/65
+
+**2018.9 – 2022.6** · B.S. in Computer Science and Technology
+: **Central South University** (中南大学)
+: — GPA: 3.5/4.0
+
+### 💼 Work Experience
+
+**2022.7 – 2023.6** · FinTech Engineer (Full-time)
+: **Bank of Communications Software Center** (交通银行软件中心, Changsha)
+: — Backend development for internal banking systems
+:::
+
+---
+
+## Research Interests
+
+::: {.glass-card}
+My research focuses on **Large Language Models**, **Computer Vision**, and **AI Agents**. I'm particularly interested in:
+
+- Vision-Language Models (VLM) and multimodal AI
+- Reinforcement Learning for agent systems
+- Web-based AI agents and automation
+- Scientific computing applications
+:::
+
+---
+
+## Contact
+
+::: {.glass-card #contact}
+Feel free to reach out if you're interested in collaboration or just want to chat!
+
+- **Email:** [xiaoqj@stu.pku.edu.cn](mailto:xiaoqj@stu.pku.edu.cn)
+- **GitHub:** [KuroJim](https://github.com/KuroJim)
+- **Phone/WeChat:** 177-2613-8902
+:::

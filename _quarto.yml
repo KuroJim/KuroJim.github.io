@@ -1,0 +1,42 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  page-navigation: true
+  title: "Quanjia Xiao (肖权珈)"
+  site-url: https://kurojim.github.io
+  favicon: images/site-logo.png
+  repo-url: https://github.com/kurojim/kurojim.github.io
+  repo-actions: [edit, issue]
+
+  page-footer:
+    left: |
+      © 2025 Quanjia Xiao
+    right: |
+      Made with [Quarto](https://quarto.org/)
+
+  navbar:
+    background: transparent
+    search: true
+    right:
+      - text: "Home"
+        href: index.qmd
+      - text: "中文"
+        href: Chinese.qmd
+      - text: "Projects"
+        href: publications.qmd
+      - text: "CV"
+        href: CV.html
+
+format:
+  html:
+    theme: styles.scss
+    toc: true
+    toc-position: right
+    toc-depth: 3
+    include-before-body: _extensions/macos-style/html/before-body.html
+    include-after-body: _extensions/macos-style/html/after-body.html
+
+filters:
+  - _extensions/macos-style/lua/filters.lua

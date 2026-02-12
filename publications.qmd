@@ -1,0 +1,130 @@
+---
+title: "Projects & Publications"
+editor:
+  markdown:
+    wrap: 72
+---
+
+::: {.glass-card}
+## Academic Links
+
+::: {.contact-links}
+[🎓 Google Scholar](https://scholar.google.com/citations?user=tlkDP2AAAAAJ) · [🆔 ORCID](https://orcid.org/0000-0002-2011-7535) · [🔬 ResearchGate](https://www.researchgate.net/profile/Yujun-Lian)
+:::
+:::
+
+---
+
+## Featured Projects
+
+::: {.project-grid}
+::: {.project-card}
+### WebAgent 强化学习增强 VLM
+
+::: {.project-tags}
+::: {.tag}VLM:::
+::: {.tag}RL:::
+::: {.tag}WebAgent:::
+::: {.tag}RAG:::
+:::
+
+与香港大学合作 | 2025.4 – 2025.6
+
+针对小型 VLM 事实知识不足问题，设计 instruction-aware SFT 与 Web-Agent 增强学习，完成小规模原型。
+
+**Know-RFT 框架特性：**
+- 指令感知的监督微调
+- WebAgent 强化学习增强
+- RAG 与 Search-R1 结合
+- 在有限显存环境下实现增量训练与检索增强
+:::
+
+::: {.project-card}
+### 二维燃烧场研究
+
+::: {.project-tags}
+::: {.tag}CNN:::
+::: {.tag}Transformer:::
+::: {.tag}ViT-UNet:::
+::: {.tag}Diffusion Model:::
+::: {.tag}PINN:::
+:::
+
+与蓝箭航天合作 | 2024.11 – 2025.3
+
+结合密度/温度场数据，联合 CNN+Transformer 进行物理量回归与重建。
+
+**主要成果：**
+- 以 VIT-UNet 建模火焰图像，RMSE ≈ 0.65%
+- 尝试扩散模型 + PINN 注入物理约束提升稳定性
+- 物理量回归与重建
+:::
+:::
+:::
+
+---
+
+## Research Areas
+
+::: {.glass-card}
+My research focuses on the intersection of **Large Language Models**, **Computer Vision**, and **Reinforcement Learning**. I'm particularly interested in:
+
+- **Vision-Language Models:** Enhancing factual knowledge and reasoning capabilities
+- **AI Agents:** Building autonomous agents that can interact with web environments
+- **Scientific Computing:** Applying ML to combustion and fluid dynamics problems
+- **Multimodal Learning:** Combining vision, language, and structured data
+:::
+
+---
+
+## Papers & Technical Notes
+
+::: {.glass-card}
+### 📝 Coming Soon
+
+I'm currently working on publishing research papers and technical notes. Check back soon for updates on:
+
+- Know-RFT framework for VLM enhancement
+- Physics-informed neural networks for combustion modeling
+- WebAgent reinforcement learning methodologies
+
+::: {.project-links}
+[🎓 Google Scholar](https://scholar.google.com/citations?user=tlkDP2AAAAAJ) · [🆔 ORCID](https://orcid.org/0000-0002-2011-7535)
+:::
+:::
+
+---
+
+## Skills & Technologies
+
+::: {.project-grid}
+::: {.glass-card}
+### Machine Learning
+::: {.project-tags}
+::: {.tag}PyTorch:::
+::: {.tag}TensorFlow:::
+::: {.tag}LLM:::
+::: {.tag}RLHF:::
+:::
+:::
+
+::: {.glass-card}
+### Computer Vision
+::: {.project-tags}
+::: {.tag}VLM:::
+::: {.tag}CNN:::
+::: {.tag}Transformer:::
+::: {.tag}ViT:::
+:::
+:::
+
+::: {.glass-card}
+### MLOps
+::: {.project-tags}
+::: {.tag}LLaMA-Factory:::
+::: {.tag}LoRA:::
+::: {.tag}QLoRA:::
+::: {.tag}RAG:::
+:::
+:::
+:::

@@ -1,0 +1,933 @@
+/*-- scss:defaults --*/
+
+/* ============================================
+   macOS Big Sur / Monterey Style Theme
+   ============================================ */
+
+/* macOS Color System */
+$macos-blue: #0071e3;
+$macos-blue-hover: #0077ed;
+$macos-gray: #1d1d1f;          /* Apple standard text color */
+$macos-gray-secondary: #86868b; /* Secondary text */
+$macos-bg-light: #f5f5f7;      /* Light mode background */
+$macos-bg-glass: rgba(255, 255, 255, 0.7);  /* Glass effect light */
+$macos-bg-glass-dark: rgba(30, 30, 30, 0.7); /* Glass effect dark */
+$macos-border: rgba(0, 0, 0, 0.04);
+$macos-border-strong: rgba(0, 0, 0, 0.1);
+
+/* Gradient Colors */
+$gradient-purple: #667eea;
+$gradient-blue: #764ba2;
+$gradient-pink: #f093fb;
+$gradient-orange: #f5576c;
+
+/* Typography */
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-monospace: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+$font-size-root: 16px;
+
+/* Spacing */
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+/* Border Radius */
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 18px;
+$radius-xl: 24px;
+$radius-full: 980px;
+
+/* Shadows */
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+$shadow-md: 0 4px 24px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+$shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+/* Glassmorphism Effect */
+$glass-blur: blur(20px) saturate(180%);
+$glass-blur-light: blur(12px) saturate(150%);
+
+/* Quarto Variables Override */
+$body-bg: $macos-bg-light;
+$body-color: $macos-gray;
+$link-color: $macos-blue;
+$link-hover-color: $macos-blue-hover;
+$headings-color: $macos-gray;
+$navbar-bg: $macos-bg-glass;
+$navbar-fg: $macos-gray;
+
+/* Code Blocks */
+$code-bg: rgba(0, 0, 0, 0.03);
+$code-color: $macos-blue;
+$code-block-bg: rgba(0, 0, 0, 0.95);
+
+/* Callouts */
+$callout-color-note: $macos-blue;
+$callout-color-tip: #34c759;
+$callout-color-important: #ff9500;
+$callout-color-warning: #ff3b30;
+$callout-color-caution: #ffcc00;
+
+/*-- scss:rules --*/
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Dynamic macOS-style gradient background */
+  background: linear-gradient(135deg, $gradient-purple 0%, $gradient-blue 50%, $gradient-pink 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: $font-family-sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $macos-gray;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.macos-loaded {
+  opacity: 1;
+}
+
+body.effects-ready * {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease,
+              color 0.3s ease;
+}
+
+/* ============================================
+   Glassmorphism Cards
+   ============================================ */
+
+.glass-card,
+.profile-card {
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-glass;
+  padding: $spacing-lg;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid $macos-border;
+}
+
+.glass-card:hover,
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: $shadow-lg, 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: $spacing-2xl $spacing-lg;
+}
+
+.profile-card {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.profile-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: $spacing-lg;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  box-shadow: $shadow-md;
+}
+
+.profile-card h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: $spacing-sm;
+  letter-spacing: -0.02em;
+}
+
+.profile-card .subtitle {
+  font-size: 1.1rem;
+  color: $macos-gray-secondary;
+  margin-bottom: $spacing-lg;
+}
+
+/* ============================================
+   Contact Links
+   ============================================ */
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  color: $macos-gray;
+  text-decoration: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  transition: all 0.2s ease;
+}
+
+.contact-links a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: $macos-blue;
+}
+
+/* ============================================
+   Quick Navigation
+   ============================================ */
+
+.quick-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  max-width: 900px;
+  margin: 0 auto $spacing-2xl;
+  padding: 0 $spacing-lg;
+}
+
+.quick-nav .glass-card {
+  text-align: center;
+  padding: $spacing-xl $spacing-lg;
+  text-decoration: none;
+  color: $macos-gray;
+  display: block;
+}
+
+.quick-nav .glass-card:hover {
+  color: $macos-blue;
+}
+
+.quick-nav .glass-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.quick-nav .glass-card .icon {
+  font-size: 2rem;
+  margin-bottom: $spacing-sm;
+  display: block;
+}
+
+/* ============================================
+   macOS Style Buttons
+   ============================================ */
+
+.macos-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  background: $macos-blue;
+  color: white;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: $radius-full;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.macos-btn:hover {
+  background: $macos-blue-hover;
+  transform: scale(1.02);
+}
+
+.macos-btn:active {
+  transform: scale(0.98);
+}
+
+.macos-btn.secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: $macos-gray;
+}
+
+.macos-btn.secondary:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Links
+   ============================================ */
+
+a {
+  color: $macos-blue;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: $macos-blue-hover;
+}
+
+/* ============================================
+   Headings
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: $macos-gray;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Content Container
+   ============================================ */
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-lg;
+}
+
+.content-section {
+  margin-bottom: $spacing-2xl;
+}
+
+/* ============================================
+   Project Cards
+   ============================================ */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+.project-card {
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-glass;
+  border: 1px solid $macos-border;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: $shadow-lg;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.project-card p {
+  color: $macos-gray-secondary;
+  line-height: 1.6;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 113, 227, 0.1);
+  color: $macos-blue;
+  border-radius: $radius-full;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-md;
+}
+
+.project-links a {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   Timeline (Education/Work)
+   ============================================ */
+
+.timeline {
+  position: relative;
+  padding-left: $spacing-2xl;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: $spacing-xl;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -$spacing-lg;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $macos-blue;
+  border: 3px solid white;
+  box-shadow: $shadow-sm;
+}
+
+.timeline-item .glass-card {
+  margin: 0;
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: $macos-gray-secondary;
+  margin-bottom: $spacing-xs;
+}
+
+.timeline-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: $spacing-xs;
+}
+
+.timeline-org {
+  color: $macos-blue;
+  font-weight: 500;
+  margin-bottom: $spacing-sm;
+}
+
+/* ============================================
+   Code Blocks
+   ============================================ */
+
+code {
+  background: $code-bg;
+  color: $code-color;
+  padding: 2px 6px;
+  border-radius: $radius-sm;
+  font-family: $font-family-monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: $code-block-bg;
+  color: #f5f5f7;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
+  overflow-x: auto;
+  margin: $spacing-lg 0;
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* ============================================
+   Navbar
+   ============================================ */
+
+.navbar {
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border-bottom: 1px solid $macos-border;
+  box-shadow: $shadow-sm;
+}
+
+.navbar-logo {
+  font-weight: 600;
+  color: $macos-gray;
+}
+
+.navbar .navbar-item a {
+  color: $macos-gray;
+  transition: color 0.2s ease;
+}
+
+.navbar .navbar-item a:hover {
+  color: $macos-blue;
+}
+
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   Lists
+   ============================================ */
+
+ul, ol {
+  padding-left: $spacing-lg;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: $spacing-sm;
+}
+
+/* ============================================
+   Blockquotes
+   ============================================ */
+
+blockquote {
+  border-left: 4px solid $macos-blue;
+  padding-left: $spacing-lg;
+  margin: $spacing-lg 0;
+  color: $macos-gray-secondary;
+  font-style: italic;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $spacing-lg 0;
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur-light;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+th, td {
+  padding: $spacing-md $spacing-lg;
+  text-align: left;
+  border-bottom: 1px solid $macos-border;
+}
+
+th {
+  background: rgba(0, 0, 0, 0.03);
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   Callouts
+   ============================================ */
+
+.callout {
+  border-radius: $radius-md;
+  border: none;
+  padding: $spacing-lg;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: $spacing-sm;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  border-top: 1px solid $macos-border;
+  padding: $spacing-xl $spacing-lg;
+  text-align: center;
+  color: $macos-gray-secondary;
+  margin-top: $spacing-2xl;
+}
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #f5f5f7;
+  }
+
+  .glass-card,
+  .profile-card,
+  .project-card {
+    background: $macos-bg-glass-dark;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #f5f5f7;
+  }
+
+  a {
+    color: #5ac8fa;
+  }
+
+  a:hover {
+    color: #74c3fc;
+  }
+
+  .contact-links a {
+    color: #f5f5f7;
+  }
+
+  .contact-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #5ac8fa;
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.1);
+    color: #5ac8fa;
+  }
+
+  .tag {
+    background: rgba(90, 200, 250, 0.15);
+    color: #5ac8fa;
+  }
+
+  .timeline::before {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  blockquote {
+    border-left-color: #5ac8fa;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .navbar {
+    background: rgba(30, 30, 30, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-scrolled {
+    background: rgba(30, 30, 30, 0.9);
+  }
+
+  .footer {
+    background: rgba(30, 30, 30, 0.8);
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .macos-btn.secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #f5f5f7;
+  }
+
+  .macos-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* Manual dark mode toggle */
+html.dark-mode {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+html.dark-mode body {
+  background: transparent;
+  color: #f5f5f7;
+}
+
+html.dark-mode .glass-card,
+html.dark-mode .profile-card,
+html.dark-mode .project-card {
+  background: $macos-bg-glass-dark;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode h5,
+html.dark-mode h6 {
+  color: #f5f5f7;
+}
+
+html.dark-mode a {
+  color: #5ac8fa;
+}
+
+html.dark-mode a:hover {
+  color: #74c3fc;
+}
+
+html.dark-mode .contact-links a {
+  color: #f5f5f7;
+}
+
+html.dark-mode .contact-links a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #5ac8fa;
+}
+
+html.dark-mode code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #5ac8fa;
+}
+
+html.dark-mode .tag {
+  background: rgba(90, 200, 250, 0.15);
+  color: #5ac8fa;
+}
+
+html.dark-mode .timeline::before {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+html.dark-mode blockquote {
+  border-left-color: #5ac8fa;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html.dark-mode .navbar {
+  background: rgba(30, 30, 30, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .navbar-scrolled {
+  background: rgba(30, 30, 30, 0.9);
+}
+
+html.dark-mode .footer {
+  background: rgba(30, 30, 30, 0.8);
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .macos-btn.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f5f5f7;
+}
+
+html.dark-mode .macos-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================
+   Dark Mode Toggle Button
+   ============================================ */
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-lg;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: 1px solid $macos-border;
+  box-shadow: $shadow-md;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: $shadow-lg;
+}
+
+.dark-mode-toggle .moon-icon {
+  display: none;
+}
+
+html.dark-mode .dark-mode-toggle .sun-icon {
+  display: none;
+}
+
+html.dark-mode .dark-mode-toggle .moon-icon {
+  display: block;
+}
+
+/* ============================================
+   Page Loader
+   ============================================ */
+
+.macos-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, $gradient-purple 0%, $gradient-blue 50%, $gradient-pink 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.macos-loader.fade-out {
+  opacity: 0;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   Fade In Animations
+   ============================================ */
+
+.fade-in-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: $spacing-xl $spacing-md;
+  }
+
+  .profile-card h1 {
+    font-size: 2rem;
+  }
+
+  .quick-nav {
+    grid-template-columns: 1fr;
+    padding: 0 $spacing-md;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    padding-left: $spacing-lg;
+  }
+
+  .dark-mode-toggle {
+    width: 44px;
+    height: 44px;
+    bottom: $spacing-md;
+    right: $spacing-md;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .glass-card,
+  .profile-card,
+  .project-card {
+    background: white;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .dark-mode-toggle {
+    display: none;
+  }
+}

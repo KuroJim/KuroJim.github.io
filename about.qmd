@@ -1,0 +1,4 @@
+title: "About"
+---
+
+Quanjia Xiao（肖权珈）的个人主页。更多信息见首页与 `CV.html`。
