@@ -27,18 +27,28 @@
   }
 
   // ============================================
-  // Glass Card Hover Effects
+  // Glass Card Hover Effects with 3D Transform
   // ============================================
   function initCardEffects() {
-    const cards = document.querySelectorAll('.glass-card, .profile-card');
+    const cards = document.querySelectorAll('.glass-card, .profile-card, .project-card');
 
     cards.forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-4px)';
+      card.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+
+        this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
       });
 
       card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
+        this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
       });
     });
   }
@@ -97,19 +107,55 @@
   }
 
   // ============================================
-  // Dock-style Navigation (if implemented)
+  // Dock-style Navigation
   // ============================================
   function initDockNav() {
-    const dockItems = document.querySelectorAll('.dock-item');
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
 
-    dockItems.forEach(item => {
-      item.addEventListener('mouseenter', function() {
-        // Expand effect
-        this.style.transform = 'scale(1.2) translateY(-8px)';
+    const navItems = navbar.querySelectorAll('.navbar-item');
+
+    navItems.forEach(item => {
+      const link = item.querySelector('a');
+      if (!link) return;
+
+      link.style.transition = 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.2s ease';
+
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.15) translateY(-2px)';
       });
 
-      item.addEventListener('mouseleave', function() {
+      link.addEventListener('mouseleave', function() {
         this.style.transform = 'scale(1) translateY(0)';
+      });
+
+      link.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1.15) translateY(-2px)';
+        }, 150);
+      });
+    });
+
+    // Wave effect for neighboring items
+    navItems.forEach((item, index) => {
+      const link = item.querySelector('a');
+      if (!link) return;
+
+      link.addEventListener('mouseenter', function() {
+        const prevItem = navItems[index - 1]?.querySelector('a');
+        const nextItem = navItems[index + 1]?.querySelector('a');
+
+        if (prevItem) prevItem.style.transform = 'scale(1.08) translateY(-1px)';
+        if (nextItem) nextItem.style.transform = 'scale(1.08) translateY(-1px)';
+      });
+
+      link.addEventListener('mouseleave', function() {
+        const prevItem = navItems[index - 1]?.querySelector('a');
+        const nextItem = navItems[index + 1]?.querySelector('a');
+
+        if (prevItem) prevItem.style.transform = 'scale(1) translateY(0)';
+        if (nextItem) nextItem.style.transform = 'scale(1) translateY(0)';
       });
     });
   }

@@ -128,6 +128,92 @@ body.effects-ready * {
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 1px solid $macos-border;
+  position: relative;
+  overflow: hidden;
+}
+
+/* macOS Window Controls */
+.glass-card::before,
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.glass-card::before,
+.profile-card::before {
+  box-shadow: inset 0 0 0 3px
+              0 0 0 3px,
+              0 0 0 3px;
+}
+
+.window-controls {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.window-controls::before,
+.window-controls::after {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.window-controls::before {
+  background: #ff5f57;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.window-controls::after {
+  background: #febc2e;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.window-controls .close-btn,
+.window-controls .min-btn,
+.window-controls .max-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.window-controls .close-btn {
+  background: #ff5f57;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.window-controls .min-btn {
+  background: #febc2e;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.window-controls .max-btn {
+  background: #34c759;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.window-controls .close-btn:hover {
+  background: #ff4136;
+}
+
+.window-controls .min-btn:hover {
+  background: #fda806;
+}
+
+.window-controls .max-btn:hover {
+  background: #2da84a;
 }
 
 .glass-card:hover,
@@ -520,6 +606,89 @@ pre code {
 
 .navbar-scrolled {
   background: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   macOS Spotlight Style Search
+   ============================================ */
+
+.navbar .search-input {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid $macos-border;
+  border-radius: $radius-full;
+  padding: 8px 16px;
+  color: $macos-gray;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  width: 200px;
+}
+
+.navbar .search-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: $macos-blue;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+  width: 280px;
+  outline: none;
+}
+
+.navbar .search-input::placeholder {
+  color: $macos-gray-secondary;
+}
+
+/* Search Results Dropdown */
+.search-results-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: $macos-bg-glass;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  border: 1px solid $macos-border;
+  margin-top: $spacing-sm;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.search-results-dropdown.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.search-result-item {
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-left: 3px solid transparent;
+}
+
+.search-result-item:hover {
+  background: rgba(0, 113, 227, 0.08);
+  border-left-color: $macos-blue;
+}
+
+.search-result-item.selected {
+  background: rgba(0, 113, 227, 0.12);
+  border-left-color: $macos-blue;
+}
+
+.search-result-title {
+  font-weight: 500;
+  color: $macos-gray;
+}
+
+.search-result-path {
+  font-size: 0.85rem;
+  color: $macos-gray-secondary;
+  margin-top: 2px;
 }
 
 /* ============================================

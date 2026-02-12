@@ -5,6 +5,8 @@ image: images/site-logo.png
 
 ::: {.hero-section}
 ::: {.profile-card}
+::: {.window-controls}
+:::
 ![Quanjia Xiao](images/site-logo.png)
 
 # Quanjia Xiao

@@ -7,6 +7,8 @@ editor:
 
 ::: {.hero-section}
 ::: {.profile-card}
+::: {.window-controls}
+:::
 ![Quanjia Xiao](images/site-logo.png)
 
 # 肖权珈 (Quanjia Xiao)
