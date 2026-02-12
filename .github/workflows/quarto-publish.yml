@@ -21,9 +21,9 @@ jobs:
 
       - name: Setup Quarto
         run: |
-          wget -qO- https://quarto.org/install/latest/quarto-linux-amd64.deb
-          sudo dpkg -i quarto-linux-amd64.deb
-          quarto install tinytex
+          wget -qO quarto-linux-amd64.deb https://quarto.org/download/latest/quarto-linux-amd64.deb || exit 1
+          sudo dpkg -i quarto-linux-amd64.deb || exit 1
+          quarto install tinytex || { echo 'TinyTeX 安装失败'; exit 1; }
 
       - name: Render and Publish
         run: quarto render
