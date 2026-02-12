@@ -14,7 +14,7 @@ editor:
 # 肖权珈 (Quanjia Xiao)
 
 ::: {.contact-links}
-[📧 xiaoqj@stu.pku.edu.cn](mailto:xiaoqj@stu.pku.edu.cn) · [🐙 GitHub](https://github.com/KuroJim) · [📱 177-2613-8902](tel:17726138902)
+[📧 xiaoqj@stu.pku.edu.cn](mailto:xiaoqj@stu.pku.edu.cn) · [🐙 GitHub](https://github.com/KuroJim)
 :::
 
 ::: {.subtitle}
@@ -30,7 +30,6 @@ editor:
 ::: {.glass-card}
 - **姓名：** 肖权珈 (Quanjia Xiao)
 - **邮箱：** [xiaoqj@stu.pku.edu.cn](mailto:xiaoqj@stu.pku.edu.cn)
-- **电话/微信：** 177-2613-8902
 - **GitHub：** [KuroJim](https://github.com/KuroJim)
 :::
 

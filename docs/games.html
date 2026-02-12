@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>teaching – Quanjia Xiao (肖权珈)</title>
+<title>Mario Game – Quanjia Xiao (肖权珈)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./games.html"> 
+    <a class="nav-link active" href="./games.html" aria-current="page"> 
 <span class="menu-text">Games</span></a>
   </li>  
   <li class="nav-item">
@@ -121,11 +121,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-play" id="toc-how-to-play" class="nav-link active" data-scroll-target="#how-to-play">How to Play</a>
+  <ul class="collapse">
+  <li><a href="#controls" id="toc-controls" class="nav-link" data-scroll-target="#controls">🎮 Controls</a></li>
+  <li><a href="#tips" id="toc-tips" class="nav-link" data-scroll-target="#tips">🏆 Tips</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kurojim/kurojim.github.io/edit/main/games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kurojim/kurojim.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
 <!-- macOS Style - Before Body -->
 <div id="macos-loader" class="macos-loader">
   <div class="loader-spinner"></div>
@@ -137,11 +147,485 @@ ul.task-list li input[type="checkbox"] {
   <span class="moon-icon">🌙</span>
 </button>
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mario Game</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<div class="hero-section">
+<div class="profile-card">
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">🎮</h2>
+</section>
+<section id="mario-game" class="level1">
+<h1>Mario Game</h1>
+<div class="subtitle">
+<p>A Classic Platformer Adventure</p>
+</div>
+</section>
+</div>
+</div>
+<hr>
+<div class="glass-card">
+<div id="game-container" style="position: relative; width: 100%; max-width: 800px; height: 400px; background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%); border-radius: 12px; overflow: hidden; margin: 0 auto;">
+<canvas id="gameCanvas" width="800" height="400" style="display: block; width: 100%; height: 100%;">
+</canvas>
+<div id="game-ui" style="position: absolute; top: 10px; left: 10px; color: white; font-family: 'Press Start 2P', cursive, sans-serif; font-size: 18px; text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+<div style="margin-bottom: 10px;">
+<p><span>Score: </span><span id="score" style="font-weight: bold; color: #FFD700;">0</span></p>
+</div>
+<div style="margin-bottom: 10px;">
+<p><span>High Score: </span><span id="highScore" style="font-weight: bold; color: #FF6B6B;">0</span></p>
+</div>
+<button id="startBtn" onclick="startGame()" style="background: #E52521; color: white; border: 3px solid #8B4513; border-radius: 8px; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer; text-shadow: 2px 2px 0 rgba(0,0,0,0.5); box-shadow: 0 4px 0 #8B4513;">
+START GAME
+</button>
+<div id="gameOver" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; background: rgba(0, 0, 0, 0.8); padding: 30px; border-radius: 12px; border: 3px solid #E52521;">
+<div style="font-size: 32px; font-weight: bold; color: #E52521; margin-bottom: 20px; text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+GAME OVER
+</div>
+<div style="margin-bottom: 10px; color: #FFD700;">
+Score: <span id="finalScore">0</span>
+</div>
+<p><button onclick="restartGame()" style="background: #E52521; color: white; border: 3px solid #8B4513; border-radius: 8px; padding: 10px 20px; font-size: 16px; font-weight: bold; cursor: pointer;"> PLAY AGAIN </button></p>
+</div>
+<div id="instructions" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); text-align: center; color: white; font-size: 14px; text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+<p>Press SPACE or Click to Jump | Collect Coins, Avoid Enemies!</p>
+</div>
+</div>
+</div>
+<style>
+@keyframes coinSpin {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.1); }
+}
+
+#game-container:hover {
+  box-shadow: 0 8px 30px rgba(135, 206, 235, 0.4);
+}
+
+#startBtn:hover {
+  background: #FF4444;
+  box-shadow: 0 6px 0 #8B4513;
+}
+
+#startBtn:active {
+  transform: scale(0.95);
+}
+</style>
+<script>
+(function() {
+  'use strict';
+
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Game state
+  let gameRunning = false;
+  let score = 0;
+  let highScore = localStorage.getItem('marioHighScore') || 0;
+  let gameSpeed = 3;
+  let animationId;
+
+  // Update high score display
+  document.getElementById('highScore').textContent = highScore;
+
+  // Player (Mario)
+  const player = {
+    x: 100,
+    y: 280,
+    width: 30,
+    height: 40,
+    velocityY: 0,
+    gravity: 0.6,
+    jumpPower: -12,
+    isJumping: false,
+
+    draw() {
+      // Body (red)
+      ctx.fillStyle = '#E52521';
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+
+      // Face (skin)
+      ctx.fillStyle = '#FFD0B0';
+      ctx.fillRect(this.x + 5, this.y + 5, this.width - 10, 15);
+
+      // Hat
+      ctx.fillStyle = '#E52521';
+      ctx.fillRect(this.x + 3, this.y - 5, this.width - 6, 8);
+
+      // Eyes
+      ctx.fillStyle = 'black';
+      ctx.fillRect(this.x + 8, this.y + 10, 4, 4);
+      ctx.fillRect(this.x + 18, this.y + 10, 4, 4);
+
+      // Mustache
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(this.x + 7, this.y + 17, 16, 3);
+
+      // Legs
+      ctx.fillStyle = '#4169E1';
+      ctx.fillRect(this.x + 5, this.y + this.height - 10, 8, 10);
+      ctx.fillRect(this.x + 17, this.y + this.height - 10, 8, 10);
+    },
+
+    jump() {
+      if (!this.isJumping) {
+        this.velocityY = this.jumpPower;
+        this.isJumping = true;
+      }
+    },
+
+    update() {
+      this.velocityY += this.gravity;
+      this.y += this.velocityY;
+
+      // Ground collision
+      if (this.y + this.height > 330) {
+        this.y = 330 - this.height;
+        this.velocityY = 0;
+        this.isJumping = false;
+      }
+    }
+  };
+
+  // Game objects
+  let obstacles = [];
+  let coins = [];
+  let enemies = [];
+  let clouds = [];
+
+  // Initialize clouds
+  for (let i = 0; i < 5; i++) {
+    clouds.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * 100 + 20,
+      width: Math.random() * 80 + 60,
+      speed: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  // Spawn obstacle
+  function spawnObstacle() {
+    if (!gameRunning) return;
+
+    const type = Math.random();
+
+    if (type < 0.3) {
+      // Coin
+      coins.push({
+        x: canvas.width,
+        y: Math.random() * 100 + 220,
+        width: 20,
+        height: 20,
+        rotation: 0
+      });
+    } else if (type < 0.7) {
+      // Enemy (Goomba-style)
+      enemies.push({
+        x: canvas.width,
+        y: 290,
+        width: 35,
+        height: 40,
+        frame: 0
+      });
+    } else {
+      // Pipe obstacle
+      obstacles.push({
+        x: canvas.width,
+        y: 280,
+        width: 30,
+        height: 50
+      });
+    }
+
+    setTimeout(spawnObstacle, 2000 / (gameSpeed / 3));
+  }
+
+  // Draw functions
+  function drawBackground() {
+    // Sky gradient
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, '#87CEEB');
+    gradient.addColorStop(1, '#E0F6FF');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Clouds
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+    clouds.forEach(cloud => {
+      cloud.x -= cloud.speed;
+      if (cloud.x + cloud.width < 0) {
+        cloud.x = canvas.width;
+      }
+
+      ctx.beginPath();
+      ctx.arc(cloud.x, cloud.y, 20, 0, Math.PI * 2);
+      ctx.arc(cloud.x + 25, cloud.y - 10, 25, 0, Math.PI * 2);
+      ctx.arc(cloud.x + 50, cloud.y, 20, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Ground
+    ctx.fillStyle = '#8B4513';
+    ctx.fillRect(0, 330, canvas.width, 70);
+
+    // Grass
+    ctx.fillStyle = '#228B22';
+    ctx.fillRect(0, 330, canvas.width, 5);
+  }
+
+  function drawObstacles() {
+    ctx.fillStyle = '#228B22';
+    obstacles.forEach(obs => {
+      obs.x -= gameSpeed;
+
+      // Pipe body
+      ctx.fillStyle = '#228B22';
+      ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+      // Pipe top
+      ctx.fillStyle = '#32CD32';
+      ctx.fillRect(obs.x - 5, obs.y, obs.width + 10, 10);
+    });
+
+    // Remove off-screen obstacles
+    obstacles = obstacles.filter(obs => obs.x + obs.width > 0);
+  }
+
+  function drawCoins() {
+    coins.forEach(coin => {
+      coin.x -= gameSpeed;
+      coin.rotation += 0.1;
+
+      ctx.save();
+      ctx.translate(coin.x + coin.width / 2, coin.y + coin.height / 2);
+      ctx.rotate(Math.sin(coin.rotation) * 0.3);
+      ctx.scale(Math.cos(coin.rotation), 1);
+
+      // Coin
+      ctx.fillStyle = '#FFD700';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, coin.width / 2, coin.height / 2, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Inner circle
+      ctx.fillStyle = '#FFA500';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, coin.width / 3, coin.height / 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    });
+
+    // Remove off-screen coins
+    coins = coins.filter(coin => coin.x + coin.width > 0);
+  }
+
+  function drawEnemies() {
+    enemies.forEach(enemy => {
+      enemy.x -= gameSpeed;
+      enemy.frame++;
+
+      // Body (brown)
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+
+      // Face
+      ctx.fillStyle = '#D2691E';
+      ctx.fillRect(enemy.x + 5, enemy.y + 5, enemy.width - 10, enemy.height - 15);
+
+      // Eyes (angry)
+      ctx.fillStyle = 'white';
+      ctx.fillRect(enemy.x + 8, enemy.y + 8, 8, 8);
+      ctx.fillRect(enemy.x + 19, enemy.y + 8, 8, 8);
+      ctx.fillStyle = 'black';
+      ctx.fillRect(enemy.x + 10, enemy.y + 10, 4, 4);
+      ctx.fillRect(enemy.x + 21, enemy.y + 10, 4, 4);
+
+      // Eyebrows
+      ctx.fillStyle = '#8B4513';
+      ctx.fillRect(enemy.x + 7, enemy.y + 6, 9, 2);
+      ctx.fillRect(enemy.x + 19, enemy.y + 6, 9, 2);
+
+      // Feet
+      ctx.fillStyle = '#4169E1';
+      const footOffset = Math.floor(enemy.frame / 10) % 2 === 0 ? 0 : 3;
+      ctx.fillRect(enemy.x + 5, enemy.y + enemy.height - 8, 10, 8);
+      ctx.fillRect(enemy.x + 20, enemy.y + enemy.height - 8 + footOffset, 10, 8);
+    });
+
+    // Remove off-screen enemies
+    enemies = enemies.filter(enemy => enemy.x + enemy.width > 0);
+  }
+
+  function checkCollisions() {
+    // Coin collision
+    coins = coins.filter(coin => {
+      if (player.x < coin.x + coin.width &&
+          player.x + player.width > coin.x &&
+          player.y < coin.y + coin.height &&
+          player.y + player.height > coin.y) {
+        score += 10;
+        document.getElementById('score').textContent = score;
+        return false;
+      }
+      return true;
+    });
+
+    // Obstacle collision
+    for (let obs of obstacles) {
+      if (player.x + 5 < obs.x + obs.width &&
+          player.x + player.width - 5 > obs.x &&
+          player.y + 5 < obs.y + obs.height &&
+          player.y + player.height - 5 > obs.y) {
+        gameOver();
+        return;
+      }
+    }
+
+    // Enemy collision
+    for (let enemy of enemies) {
+      if (player.x + 5 < enemy.x + enemy.width &&
+          player.x + player.width - 5 > enemy.x &&
+          player.y + 5 < enemy.y + enemy.height &&
+          player.y + player.height - 5 > enemy.y) {
+        gameOver();
+        return;
+      }
+    }
+  }
+
+  function gameOver() {
+    gameRunning = false;
+    cancelAnimationFrame(animationId);
+
+    if (score > highScore) {
+      highScore = score;
+      localStorage.setItem('marioHighScore', highScore);
+      document.getElementById('highScore').textContent = highScore;
+    }
+
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('gameOver').style.display = 'block';
+  }
+
+  function gameLoop() {
+    if (!gameRunning) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBackground();
+    drawObstacles();
+    drawCoins();
+    drawEnemies();
+
+    player.update();
+    player.draw();
+
+    checkCollisions();
+
+    // Increase difficulty
+    if (score > 0 && score % 100 === 0) {
+      gameSpeed = Math.min(gameSpeed + 0.2, 10);
+    }
+
+    animationId = requestAnimationFrame(gameLoop);
+  }
+
+  // Start game
+  window.startGame = function() {
+    if (gameRunning) return;
+
+    // Reset
+    gameRunning = true;
+    score = 0;
+    gameSpeed = 3;
+    obstacles = [];
+    coins = [];
+    enemies = [];
+    player.y = 280;
+    player.velocityY = 0;
+
+    document.getElementById('score').textContent = score;
+    document.getElementById('gameOver').style.display = 'none';
+    document.getElementById('startBtn').style.display = 'none';
+
+    spawnObstacle();
+    gameLoop();
+  };
+
+  // Restart game
+  window.restartGame = function() {
+    document.getElementById('gameOver').style.display = 'none';
+    startGame();
+  };
+
+  // Jump controls
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault();
+      if (gameRunning) {
+        player.jump();
+      }
+    }
+  });
+
+  canvas.addEventListener('click', () => {
+    if (gameRunning) {
+      player.jump();
+    }
+  });
+
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    if (gameRunning) {
+      player.jump();
+    }
+  });
+
+})();
+</script>
+</div>
+<hr>
+<section id="how-to-play" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-play">How to Play</h2>
+<section id="controls" class="level3 glass-card">
+<h3 class="anchored" data-anchor-id="controls">🎮 Controls</h3>
+<ul>
+<li><strong>Desktop:</strong> Press <strong>SPACE</strong> or <strong>Click</strong> to jump</li>
+<li><strong>Mobile:</strong> <strong>Tap</strong> anywhere on the screen</li>
+</ul>
+<p>Collect yellow coins for points, avoid green pipes and brown enemies!</p>
+</section>
+<section id="tips" class="level3 glass-card">
+<h3 class="anchored" data-anchor-id="tips">🏆 Tips</h3>
+<ul>
+<li>Time your jumps carefully to clear obstacles</li>
+<li>Collect coins to boost your score</li>
+<li>Difficulty increases as you progress</li>
+<li>Try to beat your high score!</li>
+</ul>
+</section>
+<hr>
+<p><em>Have fun playing! This is a tribute to the classic Super Mario Bros game that has entertained generations of gamers.</em></p>
+
+
+</section>
 
 </main> <!-- /main -->
 <!-- macOS Style JavaScript -->
@@ -554,7 +1038,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/kurojim/kurojim.github.io/edit/main/Teaching.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kurojim/kurojim.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kurojim/kurojim.github.io/edit/main/games.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kurojim/kurojim.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Made with <a href="https://quarto.org/">Quarto</a></p>
 </div>

@@ -1,28 +1,72 @@
 ---
-title: "Blogs"
-editor: 
-  markdown: 
-    wrap: 72
+title: "Blog"
 ---
 
-我平时喜欢把学习和研究中的笔记整理出来，以推文的形式分享给大家。
+::: {.hero-section}
+::: {.profile-card}
+## 📝
 
-这个习惯让我受益良多。
+# Blog
 
-其一，写作有助于训练自己的深度思考能力。写作过程中，你需要以一种多数读者都能「读懂」的方式来组织文字。这就要求你必须从不同的角度思考你要解释的概念或模型，将其「压缩」到最基本的概念和原理层面，然后从一些生活中例子，或多数读者都熟悉的概念入手，逐渐引导读者进入新的概念和模型。有时候，这需要长久的思考，并与不同人进行讨论，根据他们的反馈调整你的表述方式。在此过程中，受益最大的是自己。很多时候，当你兴冲冲地准备开始写一篇推文时，却发现开头部分很不顺畅，这很可能是你还没有从深层理解你要介绍的东西，你只是掌握了一些表面的东西，或者只是熟悉某个模型的估计命令 (而不是原理)。然而，当你按照上述「压缩」逻辑，尝试用最精简的例子来解释概念和原理时，你对它们的理解会不断加深。
+::: {.subtitle}
+Thoughts, Notes, and Research
+:::
+:::
+:::
 
-其二，写作有助于提高表达能力。许多人将语言流畅、用词华丽视为表达能力强的标志，但这只是表面现象。真正的表达能力在于，能够以听众能理解的语言，基于他们的知识背景，把自己想要传达的观点或概念讲清楚。在写作过程中，我们往往已经反复思考过如何最佳地表达，因此，当你在与别人讲解你写过的内容时，通常能够更加清晰和有条理地表达自己的想法。
+---
 
-&emsp;
+## Recent Posts
 
-## New 10
+::: {.glass-card}
+### 🚀 Understanding Large Language Models
 
+**Date:** 2025-01-15
 
+**Tags:** [LLM](#) [AI](#) [Deep Learning](#)
 
+In this post, I explore the architecture and training process of large language models, discussing key components like attention mechanisms, transformer architectures, and the scaling laws that govern their performance.
 
-## Hot 10
+[Read More →](#)
+:::
 
+::: {.glass-card}
+### 🖼️ Vision-Language Models: A Comprehensive Survey
 
+**Date:** 2024-12-20
 
-## ALL 
+**Tags:** [VLM](#) [Computer Vision](#) [Multimodal](#)
 
+Vision-Language Models represent a fascinating intersection of computer vision and natural language processing. This survey covers recent advances in VLM architectures, training strategies, and applications.
+
+[Read More →](#)
+:::
+
+::: {.glass-card}
+### 🎮 Reinforcement Learning for Agent Systems
+
+**Date:** 2024-11-10
+
+**Tags:** [RL](#) [Agents](#) [AI](#)
+
+Exploring how reinforcement learning can be applied to build intelligent agents that learn to interact with complex environments, from games to real-world applications.
+
+[Read More →](#)
+:::
+
+---
+
+## Topics
+
+::: {.project-tags}
+[:: {.tag}#LLM::](#)
+[:: {.tag}#VLM::](#)
+[:: {.tag}#RL::](#)
+[:: {.tag}#Agents::](#)
+[:: {.tag}#Computer Vision::](#)
+[:: {.tag}#WebAI::](#)
+:::
+
+---
+
+*More posts coming soon! Stay tuned for updates on AI research and development.*

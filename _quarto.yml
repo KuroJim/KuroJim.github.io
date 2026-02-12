@@ -22,8 +22,10 @@ website:
     right:
       - text: "Home"
         href: index.qmd
-      - text: "中文"
-        href: Chinese.qmd
+      - text: "Blog"
+        href: blog.qmd
+      - text: "Games"
+        href: games.qmd
       - text: "Projects"
         href: publications.qmd
       - text: "CV"
