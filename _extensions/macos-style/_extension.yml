@@ -4,7 +4,5 @@ version: 1.0.0
 author: Quanjia Xiao
 quarto-required: ">=1.0.0"
 contributes:
-  formats:
-    html:
-      shortcodes:
-        - glass-card.lua
+  filters:
+    - lua/filters.lua

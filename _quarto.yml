@@ -37,6 +37,3 @@ format:
     toc-depth: 3
     include-before-body: _extensions/macos-style/html/before-body.html
     include-after-body: _extensions/macos-style/html/after-body.html
-
-filters:
-  - _extensions/macos-style/lua/filters.lua
