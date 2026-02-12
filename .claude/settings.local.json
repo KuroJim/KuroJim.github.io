@@ -3,7 +3,24 @@
     "allow": [
       "Bash(wc:*)",
       "Bash(du:*)",
-      "Bash(quarto render:*)"
+      "Bash(quarto render:*)",
+      "Bash(ping:*)",
+      "Bash(git push:*)",
+      "Bash(quarto:*)",
+      "Bash(\"C:\\\\Users\\\\54735\\\\AppData\\\\Local\\\\Programs\\\\Quarto\\\\bin\\\\quarto.exe\" --version)",
+      "Bash(\"C:\\\\Users\\\\54735\\\\AppData\\\\Local\\\\Programs\\\\Quarto\\\\bin\\\\quarto.exe\" render)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(curl:*)",
+      "Bash(git config:*)",
+      "Bash(findstr:*)",
+      "Bash(ssh:*)",
+      "Bash(git merge:*)",
+      "Bash(_pages.yml << 'EOF'\nversion: 2\nbuild:\n  command: quarto render\n  publish:\n    - docs\nEOF)",
+      "Bash(\"C:\\\\Users\\\\54735\\\\AppData\\\\Local\\\\Programs\\\\Quarto\\\\bin\\\\quarto.exe\" check games.qmd)",
+      "Bash(\"C:\\\\Users\\\\54735\\\\AppData\\\\Local\\\\Programs\\\\Quarto\\\\bin\\\\quarto.exe\" render games.qmd --to docs/games.html)",
+      "Bash(\"C:\\\\Users\\\\54735\\\\AppData\\\\Local\\\\Programs\\\\Quarto\\\\bin\\\\quarto.exe\" render games.qmd)"
     ]
   }
 }
