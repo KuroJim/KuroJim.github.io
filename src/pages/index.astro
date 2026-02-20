@@ -22,15 +22,15 @@ import Footer from '../components/Footer.astro';
 
         <!-- Name & Title -->
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-apple-gray-900 mb-4 tracking-tight">
-          你好，我是张泽民
+          你好，我是 Quanjia Xiao
         </h1>
         <p class="text-xl sm:text-2xl text-apple-gray-500 mb-8">
-          全栈开发者 · 开源爱好者 · 技术博主
+          北京大学研究生 · AI 算法研究员 · 开源爱好者
         </p>
 
         <!-- Bio -->
         <p class="text-lg text-apple-gray-600 max-w-2xl mx-auto leading-relaxed mb-12">
-          5年开发经验，专注于构建优雅的 Web 应用。热爱开源，维护过多个 GitHub 项目。在这里分享我的技术见解和开发心得。
+          北京大学软件与微电子学院硕士研究生，专注于大模型训练和多模态 AI 研究。热爱开源，参与多个深度学习和 AI 相关项目。在这里分享我的学术研究和技术心得。
         </p>
 
         <!-- CTA Buttons -->
@@ -68,14 +68,14 @@ import Footer from '../components/Footer.astro';
         </h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {[
-            { name: 'React', icon: '⚛️', level: '精通' },
-            { name: 'Next.js', icon: '▲', level: '熟练' },
-            { name: 'TypeScript', icon: '📘', level: '精通' },
-            { name: 'Node.js', icon: '🟢', level: '熟练' },
-            { name: 'Vue.js', icon: '💚', level: '掌握' },
-            { name: 'Python', icon: '🐍', level: '掌握' },
-            { name: 'Docker', icon: '🐳', level: '了解' },
-            { name: 'PostgreSQL', icon: '🗄️', level: '熟练' },
+            { name: 'Python', icon: '🐍', level: '精通' },
+            { name: 'PyTorch', icon: '🔥', level: '精通' },
+            { name: 'Deep Learning', icon: '🧠', level: '精通' },
+            { name: 'LLM', icon: '🤖', level: '精通' },
+            { name: 'NLP', icon: '💬', level: '熟练' },
+            { name: 'C++', icon: '⚡', level: '熟练' },
+            { name: 'Git', icon: '📦', level: '熟练' },
+            { name: 'Linux', icon: '🐧', level: '掌握' },
           ].map((skill) => (
             <div class="group p-6 bg-apple-gray-50 rounded-2xl hover:bg-white hover:shadow-apple transition-all duration-300">
               <div class="text-3xl mb-3">{skill.icon}</div>
@@ -97,23 +97,29 @@ import Footer from '../components/Footer.astro';
         </h2>
         <div class="prose prose-lg max-w-none">
           <p class="text-apple-gray-600 leading-relaxed mb-6">
-            我是一名全栈开发者，目前在上海工作。从大学时期开始接触编程，至今已有 5 年的开发经验。我热爱技术，特别是前端开发和云原生技术。
+            我是一名北京大学软件与微电子学院的硕士研究生，专注于大模型训练、自然语言处理和多模态 AI 研究。本科毕业于四川大学，获得过研究生国家奖学金、优秀毕业生等荣誉。
           </p>
           <p class="text-apple-gray-600 leading-relaxed mb-6">
-            在工作中，我主要负责企业级 SaaS 应用和开源项目的开发。我喜欢探索新技术，并将最佳实践应用到实际项目中。同时，我也是开源社区的活跃贡献者，维护过几个受欢迎的 GitHub 项目。
-          </p>
-          <p class="text-apple-gray-600 leading-relaxed mb-6">
-            业余时间，我喜欢：
+            我的主要研究方向包括：
           </p>
           <ul class="text-apple-gray-600 leading-relaxed mb-6 list-disc list-inside space-y-2">
-            <li>阅读技术书籍和博客</li>
-            <li>参与开源项目开发</li>
-            <li>在技术社区分享经验</li>
-            <li>研究人工智能和机器学习</li>
-            <li>摄影和旅行</li>
+            <li><strong>大模型训练与优化</strong>：WMT2025 机器翻译、LLM 对齐算法（SFT+DPO）</li>
+            <li><strong>多模态 AI</strong>：VLM 视觉语言模型、Web Agent 智能体</li>
+            <li><strong>AI for Science</strong>：ODE 求解器、科学计算加速</li>
+            <li><strong>深度学习框架</strong>：PyTorch、VeRL、LLaMA-Factory</li>
+          </ul>
+          <p class="text-apple-gray-600 leading-relaxed mb-6">
+            在研究之余，我喜欢：
+          </p>
+          <ul class="text-apple-gray-600 leading-relaxed mb-6 list-disc list-inside space-y-2">
+            <li>阅读最新的 AI 论文（NeurIPS、ICLR、EMNLP 等）</li>
+            <li>参与开源项目，贡献代码</li>
+            <li>在学术会议和研讨会上分享研究成果</li>
+            <li>探索前沿技术：强化学习、多模态模型、AI Agent</li>
+            <li>摄影和旅行，记录生活中的美好瞬间</li>
           </ul>
           <p class="text-apple-gray-600 leading-relaxed">
-            创建这个博客是为了记录我的学习历程，也希望能够帮助到其他开发者。欢迎与我交流讨论，一起学习成长！
+            创建这个博客是为了记录我的学术研究历程，分享技术见解，也希望能够帮助到其他 AI 爱好者。欢迎与我交流讨论，一起探索 AI 的无限可能！
           </p>
         </div>
       </div>
@@ -130,7 +136,7 @@ import Footer from '../components/Footer.astro';
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:zhang.zemin@example.com"
+            href="mailto:xiaoqj@stu.pku.edu.cn"
             class="inline-flex items-center gap-2 px-6 py-3 bg-apple-gray-50 text-apple-gray-700 rounded-full hover:bg-apple-gray-100 transition-all"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
