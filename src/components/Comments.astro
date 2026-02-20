@@ -1,0 +1,54 @@
+---
+// Giscus 配置
+// 使用说明：https://github.com/giscus/giscus
+
+const GISCUS_CONFIG = {
+  // 你的 GitHub 仓库用户名
+  repo: 'KuroJim/KuroJim.github.io',
+  // 仓库 ID
+  repositoryId: 'R_kgDONLxxxx', // 需要替换为实际的 repository ID
+  // Discussion 分类
+  category: 'General',
+  // 分类 ID
+  categoryId: 'DIC_kwDONLxxxx', // 需要替换为实际的 category ID
+  // 映射方式
+  mapping: 'pathname',
+  // 严格程度
+  strict: '0',
+  // 主题
+  theme: 'light',
+  // 语言
+  lang: 'zh-CN',
+  // 懒加载
+  loading: 'lazy',
+};
+---
+
+<script is:inline src="https://giscus.app/client.js"
+  data-repo={GISCUS_CONFIG.repo}
+  data-repo-id={GISCUS_CONFIG.repositoryId}
+  data-category={GISCUS_CONFIG.category}
+  data-category-id={GISCUS_CONFIG.categoryId}
+  data-mapping={GISCUS_CONFIG.mapping}
+  data-strict={GISCUS_CONFIG.strict}
+  data-theme={GISCUS_CONFIG.theme}
+  data-lang={GISCUS_CONFIG.lang}
+  data-loading={GISCUS_CONFIG.loading}
+  crossorigin="anonymous"
+  async>
+</script>
+
+<style>
+  /* Giscus 评论样式调整 */
+  :global(.gsc-replies) {
+    border-radius: 16px !important;
+  }
+
+  :global(.gsc-comment) {
+    border-radius: 12px !important;
+  }
+
+  :global(.gsc-header-button) {
+    border-radius: 8px !important;
+  }
+</style>
