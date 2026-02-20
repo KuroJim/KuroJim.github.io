@@ -8,7 +8,6 @@ export default {
       },
       colors: {
         apple: {
-          gray: '#f5f5f7',
           gray: {
             50: '#f5f5f7',
             100: '#e8e8ed',
@@ -26,11 +25,17 @@ export default {
         },
       },
       boxShadow: {
-        'apple': '0 4px 24px rgba(0, 0, 0, 0.06)',
+        'apple': '0 2px 16px rgba(0, 0, 0, 0.04)',
+        'apple-md': '0 4px 24px rgba(0, 0, 0, 0.06)',
         'apple-lg': '0 8px 32px rgba(0, 0, 0, 0.08)',
+        'apple-xl': '0 12px 48px rgba(0, 0, 0, 0.12)',
       },
       backdropBlur: {
         xs: '2px',
+      },
+      borderRadius: {
+        'apple': '12px',
+        'apple-lg': '18px',
       },
     },
   },

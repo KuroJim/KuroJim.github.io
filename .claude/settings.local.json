@@ -7,7 +7,12 @@
       "Bash(git commit:*)",
       "Bash(git config:*)",
       "mcp__ide__executeCode",
-      "Bash(python -c:*)"
+      "Bash(python -c:*)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(ping:*)",
+      "Bash(git rm:*)"
     ]
   }
 }

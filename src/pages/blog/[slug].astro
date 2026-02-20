@@ -44,14 +44,14 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
   <Header currentPath={`/blog/${post.slug}`} />
 
   <main class="flex-1 pt-14">
-    <article class="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
+    <article class="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-20">
       <!-- Article Header -->
       <header class="mb-12">
         <!-- Tags -->
         {tags.length > 0 && (
           <div class="flex flex-wrap gap-2 mb-6">
             {tags.map((tag) => (
-              <span class="inline-flex items-center px-3 py-1 text-sm font-medium bg-apple-blue/10 text-apple-blue rounded-full">
+              <span class="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-apple-blue/10 text-apple-blue rounded-full">
                 {tag}
               </span>
             ))}
@@ -89,7 +89,7 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
       <!-- Hero Image -->
       {heroImage && (
-        <div class="mb-12 aspect-video rounded-3xl overflow-hidden bg-apple-gray-100">
+        <div class="mb-12 aspect-video rounded-3xl overflow-hidden bg-apple-gray-100 shadow-apple">
           <img
             src={heroImage}
             alt={title}
@@ -104,16 +104,16 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
       </div>
 
       <!-- Article Footer -->
-      <footer class="mt-16 pt-8 border-t border-apple-gray-200">
+      <footer class="mt-20 pt-10 border-t border-apple-gray-200">
         <!-- Navigation -->
         <nav class="flex justify-between gap-4 mb-12">
           {prevPost ? (
             <a
               href={`/blog/${prevPost.slug}`}
-              class="flex-1 p-6 bg-apple-gray-50 rounded-2xl hover:bg-apple-gray-100 transition-colors"
+              class="flex-1 p-6 bg-apple-gray-50 rounded-2xl hover:bg-white hover:shadow-apple transition-all duration-300 hover:-translate-y-0.5 group"
             >
               <div class="text-sm text-apple-gray-500 mb-2">上一篇</div>
-              <div class="font-medium text-apple-gray-900 line-clamp-2">
+              <div class="font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
                 {prevPost.data.title}
               </div>
             </a>
@@ -124,10 +124,10 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
           {nextPost ? (
             <a
               href={`/blog/${nextPost.slug}`}
-              class="flex-1 p-6 bg-apple-gray-50 rounded-2xl hover:bg-apple-gray-100 transition-colors text-right"
+              class="flex-1 p-6 bg-apple-gray-50 rounded-2xl hover:bg-white hover:shadow-apple transition-all duration-300 hover:-translate-y-0.5 group text-right"
             >
               <div class="text-sm text-apple-gray-500 mb-2">下一篇</div>
-              <div class="font-medium text-apple-gray-900 line-clamp-2">
+              <div class="font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
                 {nextPost.data.title}
               </div>
             </a>
@@ -139,7 +139,7 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
         <!-- Back to List -->
         <a
           href="/blog"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-apple-gray-50 text-apple-gray-700 rounded-full hover:bg-apple-gray-100 transition-all"
+          class="inline-flex items-center gap-2 px-7 py-3.5 bg-apple-gray-50 text-apple-gray-700 rounded-full hover:bg-white hover:shadow-apple transition-all duration-300 font-medium"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -149,7 +149,7 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
       </footer>
 
       <!-- Comments Section -->
-      <section class="mt-16 pt-8 border-t border-apple-gray-200">
+      <section class="mt-20 pt-10 border-t border-apple-gray-200">
         <h2 class="text-2xl font-semibold text-apple-gray-900 mb-8">评论</h2>
         <Comments />
       </section>
@@ -199,7 +199,8 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
   .prose a {
     text-decoration: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease-in-out;
   }
 
   .prose a:hover {
@@ -209,21 +210,24 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
   .prose code {
     padding: 0.2em 0.4em;
     background-color: #f5f5f7;
-    border-radius: 0.25em;
+    border-radius: 4px;
     font-size: 0.875em;
+    font-weight: 500;
   }
 
   .prose pre {
     margin: 1.5rem 0;
-    border-radius: 0.75rem;
+    border-radius: 12px;
     overflow-x: auto;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
   }
 
   .prose pre code {
     padding: 1rem;
     background-color: transparent;
     font-size: 0.875em;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-weight: 400;
   }
 
   .prose ul,
@@ -238,15 +242,18 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
   .prose blockquote {
     margin: 1.5rem 0;
-    padding-left: 1rem;
-    border-left: 3px solid #d2d2d7;
-    color: #6e6e73;
-    font-style: italic;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid #0071e3;
+    background-color: #f5f5f7;
+    border-radius: 0 12px 12px 0;
+    color: #424245;
+    font-style: normal;
   }
 
   .prose img {
     margin: 2rem 0;
-    border-radius: 1rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
   }
 
   .line-clamp-2 {

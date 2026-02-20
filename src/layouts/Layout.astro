@@ -63,15 +63,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
   }
 
-  /* Apple-style scrollbar */
+  /* macOS-style scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -79,17 +81,77 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #d2d2d7;
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #b0b0b5;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    background-clip: content-box;
   }
 
-  /* Selection */
+  @media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.4);
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+  }
+
+  /* macOS selection style */
   ::selection {
-    background: #0071e3;
-    color: white;
+    background: rgba(0, 113, 227, 0.3);
+    color: inherit;
+  }
+
+  /* Smooth focus rings */
+  :focus-visible {
+    outline: 2px solid #0071e3;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Optimize text rendering */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* macOS button hover effect */
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* Link smooth transitions */
+  a {
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+
+  /* Image optimization */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
