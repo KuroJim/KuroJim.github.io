@@ -1,0 +1,1 @@
+import"./hoisted.d6V8J2CV.js";const o=document.querySelector(".reading-progress-bar");if(o){const e=()=>{const t=window.innerHeight,n=document.documentElement.scrollHeight-t,r=window.scrollY,s=Math.min(r/n*100,100);o.style.transform=`scaleX(${s/100})`};window.addEventListener("scroll",()=>{window.requestAnimationFrame(e)},{passive:!0}),e()}

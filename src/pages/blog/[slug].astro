@@ -21,6 +21,12 @@ const { Content } = await post.render();
 
 const { title, description, pubDate, updatedDate, tags, heroImage } = post.data;
 
+// GitHub 编辑链接
+const githubRepo = 'KuroJim/KuroJim.github.io';
+const githubBranch = 'master';
+const editUrl = `https://github.com/${githubRepo}/edit/${githubBranch}/src/content/blog/${post.slug}.md`;
+const newIssueUrl = `https://github.com/${githubRepo}/issues/new?title=[Feedback]%20${encodeURIComponent(title)}`;
+
 const formatDate = (date: Date) => {
   return new Date(date).toLocaleDateString('zh-CN', {
     year: 'numeric',
@@ -45,18 +51,18 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
   <main class="flex-1 pt-14">
     <!-- Progress Bar -->
-    <div class="fixed top-14 left-0 right-0 h-[3px] bg-apple-gray-200/50 z-40">
+    <div class="fixed top-14 left-0 right-0 h-[2px] bg-apple-gray-200/50 z-40">
       <div class="h-full bg-apple-blue origin-left scale-x-0 reading-progress-bar"></div>
     </div>
 
-    <article class="max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-20 relative">
+    <article class="max-w-4xl mx-auto px-6 sm:px-8 py-16 sm:py-24 relative">
       <!-- Article Header -->
-      <header class="mb-12">
+      <header class="mb-16 max-w-3xl">
         <!-- Tags -->
         {tags.length > 0 && (
-          <div class="flex flex-wrap gap-2 mb-6">
+          <div class="flex flex-wrap gap-2 mb-5">
             {tags.map((tag) => (
-              <span class="inline-flex items-center px-3 py-1.5 text-sm font-medium bg-apple-blue/10 text-apple-blue rounded-full hover:bg-apple-blue/15 transition-colors cursor-default">
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-medium bg-apple-blue/10 text-apple-blue rounded-full">
                 {tag}
               </span>
             ))}
@@ -64,21 +70,21 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
         )}
 
         <!-- Title -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-apple-gray-900 mb-6 leading-tight tracking-tight">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-semibold text-apple-gray-900 mb-5 leading-[1.1] tracking-tight">
           {title}
         </h1>
 
         <!-- Description -->
         {description && (
-          <p class="text-xl text-apple-gray-600 mb-8 leading-relaxed">
+          <p class="text-lg text-apple-gray-600 mb-6 leading-relaxed font-normal">
             {description}
           </p>
         )}
 
         <!-- Meta Info Card -->
-        <div class="inline-flex items-center gap-6 px-6 py-3 bg-apple-gray-50 rounded-full">
-          <div class="flex items-center gap-2 text-sm text-apple-gray-600">
-            <svg class="w-4 h-4 text-apple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="flex items-center gap-5 text-sm text-apple-gray-500">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-apple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <time datetime={pubDate.toISOString()}>
@@ -88,9 +94,9 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
           {updatedDate && (
             <>
-              <div class="w-px h-4 bg-apple-gray-300"></div>
-              <div class="flex items-center gap-2 text-sm text-apple-gray-600">
-                <svg class="w-4 h-4 text-apple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span class="w-px h-3 bg-apple-gray-300"></span>
+              <div class="flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-apple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 <span>
@@ -104,7 +110,7 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 
       <!-- Hero Image -->
       {heroImage && (
-        <div class="mb-12 aspect-video rounded-3xl overflow-hidden bg-apple-gray-100 shadow-apple-md hover:shadow-apple-lg transition-shadow duration-300">
+        <div class="mb-12 aspect-video rounded-2xl overflow-hidden bg-apple-gray-100 shadow-apple-sm">
           <img
             src={heroImage}
             alt={title}
@@ -113,45 +119,78 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
         </div>
       )}
 
-      <!-- Article Content -->
-      <div class="prose prose-lg max-w-none">
+      <!-- Article Content with Apple-style typography -->
+      <div class="prose prose-apple max-w-none">
         <Content />
       </div>
 
       <!-- Article Footer -->
       <footer class="mt-24 pt-10 border-t border-apple-gray-200">
+        <!-- Edit on GitHub -->
+        <div class="mb-10 p-5 bg-gradient-to-r from-apple-gray-50 to-white rounded-2xl border border-apple-gray-200">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-semibold text-apple-gray-900 mb-1">发现错误或想要改进？</h3>
+              <p class="text-sm text-apple-gray-600">你可以在 GitHub 上直接编辑这篇文章，或提交问题反馈。</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a
+                href={editUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-apple-gray-900 text-white text-sm rounded-full hover:bg-apple-gray-800 transition-all duration-200 shadow-apple hover:shadow-apple-md font-medium"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>编辑文章</span>
+              </a>
+              <a
+                href={newIssueUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-apple-gray-700 text-sm rounded-full hover:shadow-sm transition-all duration-200 border border-apple-gray-200 hover:border-apple-gray-300 font-medium"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>反馈问题</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
         <!-- Author Card -->
-        <div class="mb-12 p-6 bg-gradient-to-br from-apple-gray-50 to-white rounded-3xl border border-apple-gray-200/50 shadow-apple">
+        <div class="mb-10 p-5 bg-apple-gray-50 rounded-2xl">
           <div class="flex items-start gap-4">
-            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-apple-blue to-purple-500 p-[2px] flex-shrink-0">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-apple-blue to-purple-500 p-[2px] flex-shrink-0">
               <div class="w-full h-full rounded-full bg-white flex items-center justify-center">
-                <span class="text-xl font-semibold bg-gradient-to-br from-apple-gray-800 to-apple-gray-600 bg-clip-text text-transparent">KJ</span>
+                <span class="text-lg font-semibold bg-gradient-to-br from-apple-gray-800 to-apple-gray-600 bg-clip-text text-transparent">KJ</span>
               </div>
             </div>
             <div>
-              <div class="font-semibold text-apple-gray-900 mb-1">Quanjia Xiao</div>
+              <div class="font-semibold text-apple-gray-900 mb-0.5">Quanjia Xiao</div>
               <p class="text-sm text-apple-gray-600 leading-relaxed">
-                北京大学研究生 · AI 算法研究员<br />
-                专注于大模型训练和多模态 AI 研究
+                北京大学研究生 · AI 算法研究员
               </p>
             </div>
           </div>
         </div>
 
         <!-- Navigation -->
-        <nav class="flex justify-between gap-4 mb-12">
+        <nav class="flex justify-between gap-4 mb-10">
           {prevPost ? (
             <a
               href={`/blog/${prevPost.slug}`}
-              class="flex-1 p-5 bg-apple-gray-50 rounded-2xl hover:bg-white hover:shadow-apple-md transition-all duration-300 hover:-translate-y-0.5 group border border-apple-gray-200/50"
+              class="flex-1 p-4 bg-white rounded-xl hover:shadow-sm transition-all duration-200 group border border-apple-gray-200"
             >
-              <div class="flex items-center gap-2 text-sm text-apple-gray-500 mb-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="flex items-center gap-1.5 text-xs text-apple-gray-500 mb-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
                 上一篇
               </div>
-              <div class="font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
+              <div class="text-sm font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
                 {prevPost.data.title}
               </div>
             </a>
@@ -162,15 +201,15 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
           {nextPost ? (
             <a
               href={`/blog/${nextPost.slug}`}
-              class="flex-1 p-5 bg-apple-gray-50 rounded-2xl hover:bg-white hover:shadow-apple-md transition-all duration-300 hover:-translate-y-0.5 group border border-apple-gray-200/50 text-right"
+              class="flex-1 p-4 bg-white rounded-xl hover:shadow-sm transition-all duration-200 group border border-apple-gray-200 text-right"
             >
-              <div class="flex items-center justify-end gap-2 text-sm text-apple-gray-500 mb-2">
+              <div class="flex items-center justify-end gap-1.5 text-xs text-apple-gray-500 mb-1.5">
                 下一篇
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <div class="font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
+              <div class="text-sm font-medium text-apple-gray-900 group-hover:text-apple-blue transition-colors line-clamp-2">
                 {nextPost.data.title}
               </div>
             </a>
@@ -183,7 +222,7 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
         <div class="flex justify-center">
           <a
             href="/blog"
-            class="inline-flex items-center gap-2 px-7 py-3.5 bg-apple-gray-50 text-apple-gray-700 rounded-full hover:bg-white hover:shadow-apple-md transition-all duration-300 font-medium border border-apple-gray-200/50 hover:border-apple-gray-300"
+            class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-apple-gray-700 text-sm rounded-full hover:shadow-sm transition-all duration-200 border border-apple-gray-200 hover:border-apple-gray-300"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -194,8 +233,8 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
       </footer>
 
       <!-- Comments Section -->
-      <section class="mt-20 pt-10 border-t border-apple-gray-200">
-        <h2 class="text-2xl font-semibold text-apple-gray-900 mb-8">评论</h2>
+      <section class="mt-16 pt-8 border-t border-apple-gray-200">
+        <h2 class="text-xl font-semibold text-apple-gray-900 mb-6">评论</h2>
         <Comments />
       </section>
     </article>
@@ -205,195 +244,190 @@ const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentInde
 </Layout>
 
 <style>
-  .prose {
-    --tw-prose-body: #424245;
-    --tw-prose-headings: #1d1d1f;
-    --tw-prose-links: #0071e3;
-    --tw-prose-bold: #1d1d1f;
-    --tw-prose-code: #0071e3;
-    --tw-prose-pre-code: #e5e7eb;
-    --tw-prose-pre-bg: #1d1d1f;
-  }
-
-  /* Headings with Apple style */
-  .prose h1,
-  .prose h2,
-  .prose h3,
-  .prose h4,
-  .prose h5,
-  .prose h6 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
+  /* 基于Stripe、Medium、Ghost等优秀博客的排版最佳实践 */
+  .prose-apple {
     color: #1d1d1f;
-  }
-
-  .prose h2 {
-    margin-top: 3rem;
-    margin-bottom: 1.25rem;
-    font-size: 2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e8e8ed;
-  }
-
-  .prose h3 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.625rem;
-  }
-
-  .prose h4 {
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-    font-size: 1.375rem;
-  }
-
-  /* Paragraphs with better readability */
-  .prose p {
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-    font-size: 1.0625rem;
-  }
-
-  /* Links with smooth hover */
-  .prose a {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: #0071e33;
-    transition: color 0.15s ease-in-out, text-decoration-color 0.15s ease-in-out;
-  }
-
-  .prose a:hover {
-    color: #0077ed;
-    text-decoration-color: #0077ed;
-  }
-
-  /* Inline code */
-  .prose code {
-    padding: 0.25em 0.5em;
-    background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
-    border-radius: 6px;
-    font-size: 0.875em;
-    font-weight: 500;
-    font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, 'Cascadia Code', monospace;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-  }
-
-  /* Code blocks with Xcode-style */
-  .prose pre {
-    margin: 2rem 0;
-    border-radius: 16px;
-    overflow-x: auto;
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  .prose pre code {
-    padding: 1.25rem;
-    background-color: transparent;
-    font-size: 0.875em;
+    font-size: 18px;
     line-height: 1.7;
+    letter-spacing: -0.003em;
     font-weight: 400;
-    border: none;
-    background: none;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  /* Lists with better spacing */
-  .prose ul,
-  .prose ol {
-    margin-bottom: 1.5rem;
-    padding-left: 1.75rem;
-  }
-
-  .prose li {
-    margin-bottom: 0.625rem;
-    line-height: 1.75;
-  }
-
-  .prose li::marker {
-    color: #0071e3;
-  }
-
-  /* Blockquote with Apple style */
-  .prose blockquote {
-    margin: 2rem 0;
-    padding: 1.25rem 1.5rem;
-    border-left: 4px solid #0071e3;
-    background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-    border-radius: 0 16px 16px 0;
-    color: #424245;
-    font-style: normal;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
-  }
-
-  /* Images with subtle shadow */
-  .prose img {
-    margin: 2.5rem 0;
-    border-radius: 20px;
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .prose img:hover {
-    transform: scale(1.01);
-    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Tables */
-  .prose table {
-    margin: 2rem 0;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
-  }
-
-  .prose thead {
-    background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
-  }
-
-  .prose th {
+  /* 标题层级 - Stripe风格 */
+  .prose-apple h1,
+  .prose-apple h2,
+  .prose-apple h3,
+  .prose-apple h4,
+  .prose-apple h5,
+  .prose-apple h6 {
     font-weight: 600;
+    letter-spacing: -0.01em;
     color: #1d1d1f;
-    padding: 0.875rem 1rem;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+  }
+
+  .prose-apple h2 {
+    font-size: 30px;
+    line-height: 1.25;
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid #e5e5e7;
+  }
+
+  .prose-apple h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-top: 2em;
+  }
+
+  .prose-apple h4 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  /* 段落 - 更舒适的间距 */
+  .prose-apple p {
+    margin-top: 0;
+    margin-bottom: 1.4em;
+    line-height: 1.7;
+  }
+
+  /* 链接 - Medium风格 */
+  .prose-apple a {
+    color: #0066cc;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.15s ease;
+  }
+
+  .prose-apple a:hover {
+    color: #004499;
+  }
+
+  /* 行内代码 - GitHub风格 */
+  .prose-apple code {
+    font-family: 'SF Mono', SFMono-Regular, ui-monospace, Monaco, 'Cascadia Code', monospace;
+    font-size: 0.87em;
+    font-weight: 500;
+    padding: 0.2em 0.4em;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+    color: #1d1d1f;
+  }
+
+  /* 代码块 */
+  .prose-apple pre {
+    background-color: #f6f8fa;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 1.6em 0;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .prose-apple pre code {
+    background-color: transparent;
+    color: #24292f;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  /* 列表 */
+  .prose-apple ul,
+  .prose-apple ol {
+    margin-top: 0;
+    margin-bottom: 1.4em;
+    padding-left: 1.8em;
+  }
+
+  .prose-apple li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .prose-apple li > ul,
+  .prose-apple li > ol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  /* 引用块 */
+  .prose-apple blockquote {
+    margin: 1.6em 0;
+    padding: 0 1.2em;
+    border-left: 3px solid #d0d7de;
+    color: #57606a;
+  }
+
+  .prose-apple blockquote p {
+    margin-bottom: 0;
+  }
+
+  /* 图片 */
+  .prose-apple img {
+    margin: 2em 0;
+    border-radius: 6px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* 表格 */
+  .prose-apple table {
+    width: 100%;
+    margin: 2em 0;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  .prose-apple thead {
+    border-bottom: 2px solid #d0d7de;
+  }
+
+  .prose-apple th {
+    font-weight: 600;
     text-align: left;
+    padding: 8px 16px;
+    color: #1d1d1f;
   }
 
-  .prose td {
-    padding: 0.875rem 1rem;
-    border-top: 1px solid #e8e8ed;
+  .prose-apple td {
+    padding: 8px 16px;
+    border-bottom: 1px solid #d8dee4;
   }
 
-  .prose tr:hover td {
-    background-color: #f5f5f7;
-  }
-
-  /* Horizontal rule */
-  .prose hr {
-    margin: 3rem 0;
+  /* 分割线 */
+  .prose-apple hr {
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #e8e8ed 50%, transparent 100%);
+    border-top: 2px solid #e5e5e7;
+    margin: 3em 0;
   }
 
-  /* Strong and emphasis */
-  .prose strong {
+  /* 强调和斜体 */
+  .prose-apple strong {
     font-weight: 600;
     color: #1d1d1f;
   }
 
-  .prose em {
+  .prose-apple em {
     font-style: italic;
-    color: #424245;
   }
 
-  /* Line clamping utilities */
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  /* 标题后的第一段不需要额外间距 */
+  .prose-apple h2 + p,
+  .prose-apple h3 + p {
+    margin-top: 0.6em;
+  }
+
+  /* 首段不缩进 */
+  .prose-apple > p:first-of-type {
+    margin-top: 0;
   }
 
   /* Reading progress bar animation */
