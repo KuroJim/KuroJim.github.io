@@ -114,3 +114,84 @@ draft: true
 ## ❓ 反馈问题
 
 如果在文章中发现错误，或有任何建议，可以点击文章底部的 **"反馈问题"** 按钮提交 Issue。
+
+---
+
+## 💬 评论系统配置
+
+本博客使用 [Giscus](https://github.com/giscus/giscus) 评论系统，基于 GitHub Discussions，免费且无需数据库。
+
+### 启用评论系统的步骤
+
+#### 1. 启用 GitHub Discussions
+
+1. 访问仓库设置：https://github.com/KuroJim/KuroJim.github.io/settings
+2. 在 **Features** 区域勾选 **Discussions**
+3. 点击 **Launch Discussions**
+4. 创建一个分类，例如：
+   - 名称：`博客评论` 或 `General`
+   - 描述：`用于博客文章的评论讨论`
+
+#### 2. 安装 Giscus GitHub App
+
+1. 访问：https://github.com/apps/giscus
+2. 点击 **Install** 按钮
+3. 选择 `KuroJim/KuroJim.github.io` 仓库
+4. 点击 **Install** 确认
+
+#### 3. 获取配置 ID
+
+1. 访问 Giscus 配置生成器：https://giscus.app/zh-CN
+2. 填写以下信息：
+   - **仓库**：`KuroJim/KuroJim.github.io`
+   - **Discussions 分类**：选择你创建的分类
+   - **主题映射**：`pathname`（推荐）
+   - **严格模式**：关闭
+   - **主题**：`preferred_color_scheme`（跟随系统）
+   - **语言**：`zh-CN`
+   - **懒加载**：开启
+
+3. 复制生成的配置中的以下 ID：
+   - `data-repo-id`（仓库 ID，类似 `R_kgDONLxxxxx`）
+   - `data-category-id`（分类 ID，类似 `DIC_kwDONLxxxxx`）
+
+#### 4. 更新配置文件
+
+1. 打开 `src/components/Comments.astro`
+2. 将获取到的 ID 替换到配置中：
+   ```astro
+   const GISCUS_CONFIG = {
+     repo: 'KuroJim/KuroJim.github.io',
+     repositoryId: '你的仓库ID',  // 替换这里
+     category: 'General',
+     categoryId: '你的分类ID',    // 替换这里
+     mapping: 'pathname',
+     strict: '0',
+     theme: 'preferred_color_scheme',
+     lang: 'zh-CN',
+     loading: 'lazy',
+   };
+   ```
+3. 提交更改到 GitHub
+
+### 评论系统特性
+
+- ✅ 完全免费，无需数据库
+- ✅ 支持 GitHub 账号登录
+- ✅ 支持 Markdown 格式
+- ✅ 支持代码高亮
+- ✅ 支持回复和点赞
+- ✅ 自动适配深色/浅色主题
+- ✅ 多语言支持
+- ✅ 懒加载，不影响页面性能
+
+### 管理评论
+
+所有评论都存储在 GitHub Discussions 中，你可以：
+- 在仓库的 **Discussions** 标签页查看所有评论
+- 管理不当内容
+- 回复读者评论
+- 设置讨论为置顶或关闭
+
+---
+

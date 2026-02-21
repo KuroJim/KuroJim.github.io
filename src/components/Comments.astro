@@ -1,42 +1,107 @@
 ---
 // Giscus 配置
 // 使用说明：https://github.com/giscus/giscus
+// 配置生成：https://giscus.app/zh-CN
+
+// TODO: 请按照 BLOG_EDITING_GUIDE.md 中的说明完成以下配置：
+//
+// 1. 在仓库设置中启用 Discussions 功能
+// 2. 访问 https://github.com/apps/giscus 安装 Giscus App
+// 3. 访问 https://giscus.app/zh-CN 获取以下 ID：
+//    - data-repo-id（仓库 ID）
+//    - data-category-id（分类 ID）
+//
+// 获取后替换下方的占位符即可
 
 const GISCUS_CONFIG = {
-  // 你的 GitHub 仓库用户名
+  // 你的 GitHub 仓库（格式：用户名/仓库名）
   repo: 'KuroJim/KuroJim.github.io',
-  // 仓库 ID
-  repositoryId: 'R_kgDONLxxxx', // 需要替换为实际的 repository ID
-  // Discussion 分类
-  category: 'General',
-  // 分类 ID
-  categoryId: 'DIC_kwDONLxxxx', // 需要替换为实际的 category ID
-  // 映射方式
+
+  // 仓库 ID - 从 giscus.app 获取
+  // 示例：'R_kgDONLxxxxx'
+  repositoryId: 'R_kgDOPXDahg',
+
+  // Discussions 分类名称
+  category: 'Q&A',
+
+  // 分类 ID - 从 giscus.app 获取
+  // 示例：'DIC_kwDONLxxxxx'
+  categoryId: 'DIC_kwDOPXDahs4C25YT',
+
+  // 主题映射方式
+  // pathname: 根据文章路径区分（推荐）
+  // title: 根据文章标题区分
+  // og:title: 根据 OG 标题区分
   mapping: 'pathname',
-  // 严格程度
+
+  // 严格模式
+  // 0: 不严格（推荐，会自动创建新 discussion）
+  // 1: 严格（只显示已存在的 discussion）
   strict: '0',
+
   // 主题
-  theme: 'light',
+  // light: 浅色主题
+  // dark: 深色主题
+  // dark_dimmed: 深色暗淡主题
+  // dark_high_contrast: 深色高对比度
+  // transparent: 透明主题
+  // preferred_color_scheme: 跟随系统设置（推荐）
+  theme: 'preferred_color_scheme',
+
   // 语言
   lang: 'zh-CN',
+
   // 懒加载
+  // lazy: 懒加载（推荐）
+  // auto: 自动加载
   loading: 'lazy',
 };
+
+// 判断配置是否有效
+const isConfigured = GISCUS_CONFIG.repositoryId &&
+  !GISCUS_CONFIG.repositoryId.startsWith('REPLACE_WITH') &&
+  GISCUS_CONFIG.categoryId &&
+  !GISCUS_CONFIG.categoryId.startsWith('REPLACE_WITH');
 ---
 
-<script is:inline src="https://giscus.app/client.js"
-  data-repo={GISCUS_CONFIG.repo}
-  data-repo-id={GISCUS_CONFIG.repositoryId}
-  data-category={GISCUS_CONFIG.category}
-  data-category-id={GISCUS_CONFIG.categoryId}
-  data-mapping={GISCUS_CONFIG.mapping}
-  data-strict={GISCUS_CONFIG.strict}
-  data-theme={GISCUS_CONFIG.theme}
-  data-lang={GISCUS_CONFIG.lang}
-  data-loading={GISCUS_CONFIG.loading}
-  crossorigin="anonymous"
-  async>
-</script>
+{isConfigured ? (
+  // Giscus 已配置，显示评论组件
+  <script is:inline src="https://giscus.app/client.js"
+    data-repo={GISCUS_CONFIG.repo}
+    data-repo-id={GISCUS_CONFIG.repositoryId}
+    data-category={GISCUS_CONFIG.category}
+    data-category-id={GISCUS_CONFIG.categoryId}
+    data-mapping={GISCUS_CONFIG.mapping}
+    data-strict={GISCUS_CONFIG.strict}
+    data-theme={GISCUS_CONFIG.theme}
+    data-lang={GISCUS_CONFIG.lang}
+    data-loading={GISCUS_CONFIG.loading}
+    crossorigin="anonymous"
+    async>
+  </script>
+) : (
+  // Giscus 未配置，显示提示信息
+  <div class="giscus-placeholder p-6 bg-apple-gray-50 rounded-2xl border border-apple-gray-200 text-center">
+    <svg class="w-12 h-12 mx-auto mb-4 text-apple-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+    <h3 class="text-lg font-semibold text-apple-gray-900 mb-2">评论功能即将上线</h3>
+    <p class="text-sm text-apple-gray-600 mb-4 max-w-md mx-auto">
+      评论系统需要配置 Giscus 才能使用。请按照项目中的说明文档完成配置。
+    </p>
+    <a
+      href="https://github.com/KuroJim/KuroJim.github.io/blob/master/BLOG_EDITING_GUIDE.md"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 px-4 py-2 bg-white text-apple-gray-700 text-sm rounded-full border border-apple-gray-200 hover:border-apple-blue hover:text-apple-blue transition-all duration-200"
+    >
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      查看配置说明
+    </a>
+  </div>
+)}
 
 <style>
   /* Giscus 评论样式调整 */
